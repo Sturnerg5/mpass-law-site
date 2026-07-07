@@ -79,7 +79,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
           <div style="border:1px solid #e3e8ed;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
-            <image-slot id="home-split-aviation" shape="rect" placeholder="Cockpit / hangar / runway photo" style="width:100%;height:360px;"></image-slot>
+            <image-slot id="home-split-aviation" src="photos/home-split-aviation.webp" shape="rect" placeholder="Cockpit / hangar / runway photo" style="width:100%;height:360px;"></image-slot>
             <div style="padding:32px 32px 34px;">
               <div style="display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d7186;margin-bottom:14px;">
                 <span style="width:6px;height:6px;background:#c69a4c;transform:rotate(45deg);display:block;"></span>Nationwide · Remote by nature
@@ -90,7 +90,7 @@
             </div>
           </div>
           <div style="border:1px solid #e3e8ed;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
-            <image-slot id="home-split-title" shape="rect" placeholder="Home / office / courthouse photo" style="width:100%;height:360px;"></image-slot>
+            <image-slot id="home-split-title" src="photos/home-split-title.webp" shape="rect" placeholder="Home / office / courthouse photo" style="width:100%;height:360px;"></image-slot>
             <div style="padding:32px 32px 34px;">
               <div style="display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d7186;margin-bottom:14px;">
                 <span style="width:6px;height:6px;background:#c69a4c;transform:rotate(45deg);display:block;"></span>Across Alabama · On the ground
@@ -117,7 +117,7 @@
           </div>
         </div>
         <div style="align-self:stretch;display:flex;align-items:center;padding:56px 0;">
-          <image-slot id="hero-cockpit" shape="rounded" radius="4" placeholder="Drop a flight-deck / cockpit photo" style="width:100%;height:440px;"></image-slot>
+          <image-slot id="hero-cockpit" src="photos/hero-cockpit.webp" shape="rounded" radius="4" placeholder="Drop a flight-deck / cockpit photo" style="width:100%;height:440px;"></image-slot>
         </div>
       </div>
     </section>
@@ -187,7 +187,7 @@
     <!-- EXPERT WITNESS HIGHLIGHT -->
     <section style="background:#0b1a2e;padding:88px 0;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:56px;align-items:center;">
-        <image-slot id="home-expert" shape="rounded" radius="4" placeholder="Drop an attorney portrait or hangar photo" style="width:100%;height:340px;"></image-slot>
+        <image-slot id="home-expert" src="photos/home-expert.webp" shape="rounded" radius="4" placeholder="Drop an attorney portrait or hangar photo" style="width:100%;height:340px;"></image-slot>
         <div>
           <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:18px;">For Attorneys &amp; Insurers</div>
           <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:36px;line-height:1.15;color:#ffffff;margin:0 0 20px;">An expert witness who has been in the seat.</h2>
@@ -216,7 +216,7 @@
           </div>
           <button onClick="{{ goTitle }}" style="background:#0b1a2e;color:#ffffff;border:none;padding:15px 28px;font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;cursor:pointer;border-radius:2px;" style-hover="background:#12202f;">Explore Title &amp; Closing →</button>
         </div>
-        <image-slot id="home-title" shape="rounded" radius="4" placeholder="Drop a property / closing photo" style="width:100%;height:360px;"></image-slot>
+        <image-slot id="home-title" src="photos/home-title.webp" shape="rounded" radius="4" placeholder="Drop a property / closing photo" style="width:100%;height:360px;"></image-slot>
       </div>
     </section>
 
@@ -254,7 +254,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;">
           <sc-for list="{{ insights }}" as="i" hint-placeholder-count="3">
             <button onClick="{{ i.onOpen }}" style="text-align:left;background:none;border:none;cursor:pointer;padding:0;display:flex;flex-direction:column;">
-              <image-slot id="{{ i.slotId }}" shape="rounded" radius="4" placeholder="Drop article image" style="width:100%;height:170px;margin-bottom:18px;"></image-slot>
+              <image-slot id="{{ i.slotId }}" src="photos/{{ i.slotId }}.webp" shape="rounded" radius="4" placeholder="Drop article image" style="width:100%;height:170px;margin-bottom:18px;"></image-slot>
               <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c69a4c;margin-bottom:10px;">{{ i.tag }}</span>
               <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;line-height:1.25;color:#12202f;margin:0 0 10px;">{{ i.title }}</h3>
               <p style="font-size:14px;line-height:1.6;color:#556270;margin:0 0 12px;">{{ i.excerpt }}</p>
@@ -291,7 +291,7 @@
     <section style="padding:80px 0;background:#ffffff;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start;">
         <div style="position:sticky;top:100px;">
-          <image-slot id="about-headshot" shape="rounded" radius="4" placeholder="Drop a professional headshot" style="width:100%;height:420px;margin-bottom:20px;"></image-slot>
+          <image-slot id="about-headshot" src="photos/about-headshot.webp" shape="rounded" radius="4" placeholder="Drop a professional headshot" style="width:100%;height:420px;margin-bottom:20px;"></image-slot>
           <div style="border:1px solid #e3e8ed;border-radius:4px;padding:22px 24px;">
             <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c69a4c;margin-bottom:14px;">Credentials</div>
             <sc-for list="{{ credlist }}" as="c" hint-placeholder-count="6">
@@ -324,7 +324,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
           <sc-for list="{{ team }}" as="t" hint-placeholder-count="3">
             <div style="border:1px solid #e3e8ed;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
-              <image-slot id="{{ t.slotId }}" shape="rect" placeholder="Drop headshot" style="width:100%;height:240px;"></image-slot>
+              <image-slot id="{{ t.slotId }}" src="photos/{{ t.slotId }}.webp" shape="rect" placeholder="Drop headshot" style="width:100%;height:240px;"></image-slot>
               <div style="padding:26px 26px 30px;">
                 <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#12202f;margin:0 0 4px;">{{ t.name }}</h3>
                 <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c69a4c;margin-bottom:14px;">{{ t.role }}</div>
@@ -359,7 +359,7 @@
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center;padding:48px 0;border-bottom:1px solid #eceff2;">
-            <image-slot id="{{ s.slotId }}" shape="rounded" radius="4" placeholder="Drop image" style="width:100%;height:300px;"></image-slot>
+            <image-slot id="{{ s.slotId }}" src="photos/{{ s.slotId }}.webp" shape="rounded" radius="4" placeholder="Drop image" style="width:100%;height:300px;"></image-slot>
             <div>
               <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
                 <span style="font-family:'Roboto Mono',monospace;font-size:14px;color:#c69a4c;font-weight:500;">{{ s.num }}</span>
@@ -474,7 +474,7 @@
             <a href="tel:2526585577" style="display:inline-flex;align-items:center;padding:16px 30px;border:1px solid rgba(255,255,255,0.3);border-radius:2px;color:#ffffff;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;" style-hover="border-color:#c69a4c;color:#c69a4c;">Call (252) 658 5577</a>
           </div>
         </div>
-        <image-slot id="title-hero" shape="rounded" radius="4" placeholder="Drop a closing / property photo" style="width:100%;height:380px;"></image-slot>
+        <image-slot id="title-hero" src="photos/title-hero.webp" shape="rounded" radius="4" placeholder="Drop a closing / property photo" style="width:100%;height:380px;"></image-slot>
       </div>
     </section>
 
@@ -526,7 +526,7 @@
     <!-- MEET CHAD -->
     <section style="padding:88px 0;background:#ffffff;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center;">
-        <image-slot id="chad-portrait" shape="rounded" radius="4" placeholder="Drop Chad's headshot" style="width:100%;height:440px;"></image-slot>
+        <image-slot id="chad-portrait" src="photos/team-chad.webp" shape="rounded" radius="4" placeholder="Drop Chad's headshot" style="width:100%;height:440px;"></image-slot>
         <div>
           <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:16px;">Meet Your Title Agent</div>
           <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:36px;line-height:1.12;color:#12202f;margin:0 0 20px;">Chad Bright, JD — two decades of title, one standard of care.</h2>
@@ -597,7 +597,7 @@
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;">
         <sc-for list="{{ insights }}" as="i" hint-placeholder-count="3">
           <div style="border:1px solid #e3e8ed;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;">
-            <image-slot id="{{ i.slotId }}" shape="rect" placeholder="Drop article image" style="width:100%;height:190px;"></image-slot>
+            <image-slot id="{{ i.slotId }}" src="photos/{{ i.slotId }}.webp" shape="rect" placeholder="Drop article image" style="width:100%;height:190px;"></image-slot>
             <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1;">
               <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c69a4c;margin-bottom:12px;">{{ i.tag }}</span>
               <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;line-height:1.25;color:#12202f;margin:0 0 12px;">{{ i.title }}</h3>
@@ -793,7 +793,7 @@
   <sc-if value="{{ showCrewModal }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeCrew }}" style="position:fixed;inset:0;z-index:100;background:rgba(8,21,34,0.72);display:flex;align-items:center;justify-content:center;padding:24px;">
       <div onClick="{{ stop }}" style="background:#fff;border-radius:8px;max-width:780px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-        <image-slot id="{{ crewSlot }}" shape="rect" placeholder="Headshot" style="width:100%;height:100%;min-height:340px;"></image-slot>
+        <image-slot id="{{ crewSlot }}" src="photos/{{ crewSlot }}.webp" shape="rect" placeholder="Headshot" style="width:100%;height:100%;min-height:340px;"></image-slot>
         <div style="padding:40px 40px 44px;position:relative;">
           <button onClick="{{ closeCrew }}" style="position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;font-size:24px;color:#8a9bab;line-height:1;">×</button>
           <h2 style="font-family:'Newsreader',serif;font-weight:600;font-size:30px;color:#12202f;margin:0 0 4px;padding-right:24px;">{{ crewName }}</h2>
