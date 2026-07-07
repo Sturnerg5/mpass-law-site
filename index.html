@@ -52,7 +52,21 @@
         </span>
       </button>
       <nav style="display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap;justify-content:flex-end;">
-        <button onClick="{{ goAbout }}" style="background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:0;" style-hover="color:#c69a4c;">About</button>
+        <div onMouseEnter="{{ openAboutMenu }}" onMouseLeave="{{ closeAboutMenu }}" style="position:relative;">
+          <button onClick="{{ toggleAboutMenu }}" style="background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:0;display:flex;align-items:center;gap:5px;" style-hover="color:#c69a4c;">About<span style="font-size:9px;color:#8a9bab;">▾</span></button>
+          <sc-if value="{{ aboutMenu }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:14px;z-index:60;">
+              <div style="background:#ffffff;border:1px solid #e3e8ed;border-radius:6px;box-shadow:0 12px 34px rgba(8,21,34,0.14);padding:8px;min-width:210px;display:flex;flex-direction:column;">
+                <button onClick="{{ goCrew }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:11px 14px;border-radius:4px;white-space:nowrap;" style-hover="background:#f4f6f8;color:#c69a4c;">Meet Our Crew</button>
+                <button onClick="{{ goBackground }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:11px 14px;border-radius:4px;white-space:nowrap;" style-hover="background:#f4f6f8;color:#c69a4c;">Our Background</button>
+                <button onClick="{{ goCredentials }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:11px 14px;border-radius:4px;white-space:nowrap;" style-hover="background:#f4f6f8;color:#c69a4c;">Credentials &amp; Admissions</button>
+                <div style="height:1px;background:#eceff2;margin:6px 10px;"></div>
+                <button onClick="{{ goServices }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:11px 14px;border-radius:4px;white-space:nowrap;" style-hover="background:#f4f6f8;color:#c69a4c;">Aviation Services</button>
+                <button onClick="{{ goTitle }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:11px 14px;border-radius:4px;white-space:nowrap;" style-hover="background:#f4f6f8;color:#c69a4c;">Title &amp; Closing</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
         <button onClick="{{ goTitle }}" style="background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:0;white-space:nowrap;" style-hover="color:#c69a4c;">Title &amp; Closing</button>
         <button onClick="{{ goServices }}" style="background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:0;white-space:nowrap;" style-hover="color:#c69a4c;">Aviation Services</button>
         <button onClick="{{ goExpert }}" style="background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;font-weight:500;color:#29323b;padding:0;white-space:nowrap;" style-hover="color:#c69a4c;">Expert Witness</button>
@@ -284,42 +298,43 @@
   <div>
     <section style="background:#0b1a2e;padding:80px 0 72px;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:18px;">The Attorney</div>
-        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,6vw,50px);line-height:1.1;color:#ffffff;margin:0;max-width:820px;">From the flight deck to the courtroom.</h1>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:18px;">About the Firm</div>
+        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,6vw,50px);line-height:1.1;color:#ffffff;margin:0;max-width:860px;">A boutique firm built on real-world experience.</h1>
+        <p style="font-size:18px;line-height:1.65;color:#aebccb;max-width:640px;margin:22px 0 0;">MPASS Law Group pairs aviation law, served nationwide, with a Title &amp; Closing division rooted in Alabama — led by people who have actually lived the work they practice.</p>
       </div>
     </section>
     <section style="padding:80px 0;background:#ffffff;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start;">
+        <div>
+          <h2 id="background" style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;line-height:1.3;color:#12202f;margin:0 0 24px;scroll-margin-top:90px;">Counsel from people who have lived the work.</h2>
+          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 20px;">MPASS Law Group is a boutique firm with a deliberately narrow focus and an unusually deep bench of first-hand experience. On the aviation side, our counsel has actually flown the aircraft — commanding Boeing 747s across the world's airspace — so clients get a lawyer who speaks FAA, operations, and the cockpit natively. On the ground, our Title &amp; Closing division brings decades in mortgage, real estate, and law to one of life's biggest transactions.</p>
+          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 20px;">The name MPASS reflects the mission: when a matter looks like an <em style="font-style:italic;">impasse</em>, we're the way through — steady legal guidance around the obstacle. (It also carries the initials of the founder's children.)</p>
+          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 34px;">We serve aviation clients nationwide and title &amp; closing clients across Alabama — from Dothan to Huntsville — with standard, mobile, and fully remote options built around each client's circumstances. As a Service-Disabled Veteran-Owned Small Business, we bring a service-first mindset to every file.</p>
+          <div style="border-left:3px solid #c69a4c;padding:6px 0 6px 24px;margin-bottom:34px;">
+            <p style="font-family:'Newsreader',serif;font-style:italic;font-size:22px;line-height:1.45;color:#12202f;margin:0;">"When it looks like an impasse, we're the way through."</p>
+          </div>
+          <button onClick="{{ goCrew }}" style="background:#c69a4c;color:#0b1a2e;border:none;padding:16px 30px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">Meet Our Crew</button>
+        </div>
         <div style="position:sticky;top:100px;">
-          <image-slot id="about-headshot" src="photos/about-headshot.webp" shape="rounded" radius="4" placeholder="Drop a professional headshot" style="width:100%;height:420px;margin-bottom:20px;"></image-slot>
-          <div style="border:1px solid #e3e8ed;border-radius:4px;padding:22px 24px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c69a4c;margin-bottom:14px;">Credentials</div>
-            <sc-for list="{{ credlist }}" as="c" hint-placeholder-count="6">
+          <image-slot id="about-firm" src="photos/home-split-aviation.webp" shape="rounded" radius="4" placeholder="Firm / aviation image" style="width:100%;height:300px;margin-bottom:20px;"></image-slot>
+          <div id="credentials" style="border:1px solid #e3e8ed;border-radius:4px;padding:22px 24px;scroll-margin-top:90px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c69a4c;margin-bottom:14px;">Credentials &amp; Admissions</div>
+            <sc-for list="{{ firmCreds }}" as="c" hint-placeholder-count="6">
               <div style="display:flex;gap:10px;padding:7px 0;font-size:14px;color:#29323b;border-bottom:1px solid #f0f3f5;">
                 <span style="width:5px;height:5px;background:#c69a4c;transform:rotate(45deg);display:block;margin-top:7px;flex-shrink:0;"></span>{{ c }}
               </div>
             </sc-for>
           </div>
         </div>
-        <div>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;line-height:1.3;color:#12202f;margin:0 0 24px;">Steven H. Turner, JD — airline captain and aviation attorney.</h2>
-          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 20px;">Most aviation lawyers have read about the industry. Steven H. Turner has flown it — commanding Boeing 747s across the world's airspace while building a legal practice devoted to the people and businesses that make aviation run. That dual perspective, cockpit and courtroom, is what clients come to MPASS Law for.</p>
-          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 20px;">Steven's path began in the United States Marine Corps, where he served eight years as an intelligence analyst — the foundation of the disciplined, detail-first approach he brings to every matter. As an ATP-rated captain, he has lived the operational realities his clients face — FAA regulation, safety management, crew decision-making, and the day-to-day pressures of running an aircraft or an aviation business. As an attorney, he translates that experience into transactions, structures, and counsel that actually hold up in the real world.</p>
-          <p style="font-size:17px;line-height:1.75;color:#3f4b57;margin:0 0 34px;">The result is legal work without the translation layer. Clients don't have to explain their world to their lawyer — their lawyer has been in the seat.</p>
-          <div style="border-left:3px solid #c69a4c;padding:6px 0 6px 24px;margin-bottom:34px;">
-            <p style="font-family:'Newsreader',serif;font-style:italic;font-size:22px;line-height:1.45;color:#12202f;margin:0;">"Your aviation counsel actually flies the aircraft."</p>
-          </div>
-          <button onClick="{{ goContact }}" style="background:#c69a4c;color:#0b1a2e;border:none;padding:16px 30px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">Schedule a Consultation</button>
-        </div>
       </div>
     </section>
     <!-- TEAM -->
-    <section style="padding:0 0 96px;background:#ffffff;">
+    <section id="crew" style="padding:0 0 96px;background:#ffffff;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
         <div style="text-align:center;margin-bottom:44px;">
           <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:16px;">Meet Our Crew</div>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:38px;color:#12202f;margin:0 0 12px;">The three people behind MPASS Law.</h2>
-          <p style="font-size:16px;color:#556270;margin:0;">Select any of us to read the full story.</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:38px;color:#12202f;margin:0 0 12px;">The people who make MPASS work.</h2>
+          <p style="font-size:16px;color:#556270;margin:0;">Select any team member to read their full bio.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
           <sc-for list="{{ team }}" as="t" hint-placeholder-count="3">
@@ -470,7 +485,7 @@
           <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,7vw,54px);line-height:1.08;letter-spacing:-0.01em;color:#ffffff;margin:0 0 22px;">We bring the closing to you.</h1>
           <p style="font-size:18px;line-height:1.68;color:#aebccb;max-width:560px;margin:0 0 34px;">Standard, mobile, and fully digital closings for aircraft, hangars, homes, and land. Clean title, aviation-grade rigor, and the flexibility to close wherever — and however — works for you.</p>
           <div style="display:flex;gap:14px;flex-wrap:wrap;">
-            <button onClick="{{ goContact }}" style="background:#c69a4c;color:#0b1a2e;border:none;padding:16px 30px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">Start a Closing</button>
+            <button onClick="{{ goClosing }}" style="background:#c69a4c;color:#0b1a2e;border:none;padding:16px 30px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">Start a Closing</button>
             <a href="tel:2526585577" style="display:inline-flex;align-items:center;padding:16px 30px;border:1px solid rgba(255,255,255,0.3);border-radius:2px;color:#ffffff;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;" style-hover="border-color:#c69a4c;color:#c69a4c;">Call (252) 658 5577</a>
           </div>
         </div>
@@ -529,9 +544,9 @@
         <image-slot id="chad-portrait" src="photos/team-chad.webp" shape="rounded" radius="4" placeholder="Drop Chad's headshot" style="width:100%;height:440px;"></image-slot>
         <div>
           <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:16px;">Meet Your Title Agent</div>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:36px;line-height:1.12;color:#12202f;margin:0 0 20px;">Chad Bright, JD — two decades of title, one standard of care.</h2>
-          <p style="font-size:16.5px;line-height:1.72;color:#3f4b57;margin:0 0 18px;">Chad brings a Juris Doctor together with more than 20 years in the mortgage and title industry to MPASS Law. He has seen closings from every side of the table — lender, title, and legal — and that depth is what makes a MPASS closing calm, clean, and predictable.</p>
-          <p style="font-size:16.5px;line-height:1.72;color:#3f4b57;margin:0 0 30px;">Whether it's a first home in Dothan, a hangar in Huntsville, an aircraft closing coordinated with the FAA, or a fully remote signing from across the country, Chad brings the same rigor and the same commitment to bring the closing to you.</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:36px;line-height:1.12;color:#12202f;margin:0 0 20px;">Chad Bright, JD — from the highway to the closing table.</h2>
+          <p style="font-size:16.5px;line-height:1.72;color:#3f4b57;margin:0 0 18px;">A Dothan native, Chad served a decade as an Alabama State Trooper before building a career in mortgage lending and real estate, then earning his Juris Doctorate from Faulkner Law in 2024. He has seen closings from every side of the table — lender, title, and legal — and that depth is what makes a MPASS closing calm, clean, and predictable.</p>
+          <p style="font-size:16.5px;line-height:1.72;color:#3f4b57;margin:0 0 30px;">Whether it's a first home in Dothan, a family farm, a hangar in Huntsville, or a fully remote signing from across the country, Chad brings the same rigor, care, and hometown accountability — and the same commitment to bring the closing to you.</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;">
             <sc-for list="{{ chadStats }}" as="cs" hint-placeholder-count="3">
               <div style="border-left:2px solid #c69a4c;padding-left:16px;">
@@ -577,7 +592,7 @@
           <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:32px;line-height:1.12;color:#0b1a2e;margin:0 0 6px;">Let's bring your closing to you.</h2>
           <p style="font-size:16px;color:#3a2f14;margin:0;">Standard, mobile, or fully remote — start with a quick call.</p>
         </div>
-        <button onClick="{{ goContact }}" style="background:#0b1a2e;color:#ffffff;border:none;padding:17px 34px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;white-space:nowrap;" style-hover="background:#12202f;">Start a Closing</button>
+        <button onClick="{{ goClosing }}" style="background:#0b1a2e;color:#ffffff;border:none;padding:17px 34px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;white-space:nowrap;" style-hover="background:#12202f;">Start a Closing</button>
       </div>
     </section>
   </div>
@@ -656,9 +671,9 @@
     <section style="background:#0b1a2e;padding:80px 0;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start;">
         <div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:18px;">Schedule a Consultation</div>
-          <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,5.5vw,44px);line-height:1.12;color:#ffffff;margin:0 0 22px;">Let's talk about your aircraft, operation, or case.</h1>
-          <p style="font-size:16.5px;line-height:1.7;color:#aebccb;margin:0 0 40px;">Tell us a little about your matter and we'll get back to you promptly. Prefer to talk now? Call or email directly.</p>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.24em;color:#c69a4c;text-transform:uppercase;margin-bottom:18px;">{{ contactEyebrow }}</div>
+          <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,5.5vw,44px);line-height:1.12;color:#ffffff;margin:0 0 22px;">{{ contactHeading }}</h1>
+          <p style="font-size:16.5px;line-height:1.7;color:#aebccb;margin:0 0 40px;">{{ contactSub }}</p>
           <div style="display:flex;flex-direction:column;gap:22px;">
             <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
               <div>
@@ -700,21 +715,13 @@
                 <div>
                   <label style="display:block;font-size:12px;font-weight:600;color:#12202f;margin-bottom:7px;">I am a…</label>
                   <select name="role" style="width:100%;border:1px solid #d4dbe1;border-radius:2px;padding:12px 14px;font-family:'Archivo',sans-serif;font-size:14px;color:#12202f;outline:none;background:#fff;">
-                    <option>Aircraft buyer / owner</option>
-                    <option>Charter / operator</option>
-                    <option>Aviation business</option>
-                    <option>Attorney / insurer</option>
-                    <option>Other</option>
+                    <sc-for list="{{ roleOptions }}" as="opt" hint-placeholder-count="5"><option>{{ opt }}</option></sc-for>
                   </select>
                 </div>
                 <div>
                   <label style="display:block;font-size:12px;font-weight:600;color:#12202f;margin-bottom:7px;">Matter type</label>
                   <select name="matter" style="width:100%;border:1px solid #d4dbe1;border-radius:2px;padding:12px 14px;font-family:'Archivo',sans-serif;font-size:14px;color:#12202f;outline:none;background:#fff;">
-                    <option>Aircraft transaction</option>
-                    <option>Regulatory / operator counsel</option>
-                    <option>Expert witness</option>
-                    <option>Business formation</option>
-                    <option>Title &amp; closing</option>
+                    <sc-for list="{{ matterOptions }}" as="opt" hint-placeholder-count="5"><option>{{ opt }}</option></sc-for>
                   </select>
                 </div>
               </div>
@@ -722,7 +729,7 @@
                 <label style="display:block;font-size:12px;font-weight:600;color:#12202f;margin-bottom:7px;">How can we help?</label>
                 <textarea rows="4" name="message" style="width:100%;border:1px solid #d4dbe1;border-radius:2px;padding:12px 14px;font-family:'Archivo',sans-serif;font-size:14px;color:#12202f;outline:none;resize:vertical;" style-focus="border-color:#c69a4c;"></textarea>
               </div>
-              <button type="submit" style="width:100%;background:#c69a4c;color:#0b1a2e;border:none;padding:16px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">Request Consultation</button>
+              <button type="submit" style="width:100%;background:#c69a4c;color:#0b1a2e;border:none;padding:16px;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:2px;" style-hover="background:#d9b978;">{{ contactCta }}</button>
               <p style="font-size:11.5px;line-height:1.5;color:#8a9bab;margin:16px 0 0;text-align:center;">Submitting this form does not create an attorney-client relationship.</p>
             </form>
           </sc-if>
@@ -766,7 +773,7 @@
         <div>
           <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c69a4c;margin-bottom:16px;">Firm</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <button onClick="{{ goAbout }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;color:#aebccb;padding:0;" style-hover="color:#ffffff;">About the Attorney</button>
+            <button onClick="{{ goCrew }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;color:#aebccb;padding:0;" style-hover="color:#ffffff;">Meet Our Crew</button>
             <button onClick="{{ goExpert }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;color:#aebccb;padding:0;" style-hover="color:#ffffff;">Expert Witness</button>
             <button onClick="{{ goInsights }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;color:#aebccb;padding:0;" style-hover="color:#ffffff;">Insights</button>
             <button onClick="{{ goContact }}" style="background:none;border:none;text-align:left;cursor:pointer;font-family:'Archivo',sans-serif;font-size:14px;color:#aebccb;padding:0;" style-hover="color:#ffffff;">Contact</button>
@@ -828,7 +835,19 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;clientLoginUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Compass Legal&quot;,&quot;label&quot;:&quot;Client Login URL (Compass Legal portal)&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Compass Legal&quot;,&quot;label&quot;:&quot;Consultation intake URL (Compass Legal API)&quot;},&quot;formEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hello@mpass-law.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Compass Legal&quot;,&quot;label&quot;:&quot;Fallback: send emails to&quot;},&quot;showAnnouncementBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;,&quot;label&quot;:&quot;Show 'Title &amp; Closing' launch banner&quot;},&quot;showInsights&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;,&quot;label&quot;:&quot;Show Insights section on homepage&quot;}}">
 class Component extends DCLogic {
-  state = { page: 'home', formSubmitted: false, openCrew: null, openArticle: null };
+  state = { page: 'home', formSubmitted: false, openCrew: null, openArticle: null, intent: 'aviation', aboutMenu: false };
+
+  aboutGo(anchor) {
+    this.setState({ page: 'about', formSubmitted: false, openCrew: null, openArticle: null, aboutMenu: false });
+    try { window.scrollTo(0, 0); } catch (e) {}
+    if (!anchor) return;
+    setTimeout(() => {
+      try {
+        const el = document.getElementById(anchor);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+      } catch (e) {}
+    }, 130);
+  }
 
   go(page) {
     this.setState({ page, formSubmitted: false });
@@ -923,13 +942,14 @@ class Component extends DCLogic {
           'From there he moved to the flight deck, earning his ATP and commanding Boeing 747s on international widebody operations. He knows FAA regulation, safety management, and crew decision-making because he has lived them at altitude.',
           'He earned his Juris Doctor from the University of New Hampshire — a top intellectual-property program — after beginning his studies at Faulkner Law, and is admitted before the Alabama State Bar and the U.S. District Courts for the Northern and Middle Districts of Alabama. He leads the firm\u2019s aviation transactions, regulatory, expert-witness, and IP/AI & technology practices.',
         ] },
-      { name: 'Chad Bright, JD', role: 'Title Agent', img: 'HEADSHOT', slotId: 'team-chad',
-        bio: 'A Juris Doctor (Faulkner Law) and licensed Title Agent, Chad brings more than 20 years in the mortgage and title industry to MPASS Law. He leads the Title & Closing division — standard, mobile, and remote online closings for aircraft, hangars, homes, and real estate across Alabama.',
+      { name: 'Chad Bright, JD, MLO, REALTOR\u00ae', role: 'Title & Closing Attorney-Advised Services', img: 'HEADSHOT', slotId: 'team-chad',
+        bio: 'A native of Dothan and Faulkner Law graduate with a decade as an Alabama State Trooper and years in mortgage lending, Chad leads the firm\u2019s Title & Closing division — standard, mobile, and remote online closings across the Wiregrass and Alabama.',
         longBio: [
-          'Chad Bright leads MPASS Law Group\u2019s Title & Closing division, bringing a Juris Doctor from Faulkner Law together with more than two decades in the mortgage and title industry.',
-          'Across 20+ years he has seen closings from every seat at the table — lender, title, and legal — giving him a complete view of what makes a transaction close cleanly and what causes deals to fall apart.',
-          'He handles standard, mobile, and remote online closings for aircraft, hangars, homes, and real estate across Alabama, with the same rigor whether it\u2019s a first home in Dothan or a hangar in Huntsville.',
-          'His commitment is simple: bring the closing to the client, keep it clean and well-documented, and communicate clearly at every checkpoint.',
+          'A native of Dothan, Alabama, Chad Bright has spent his career in service to the Wiregrass — first as a State Trooper protecting the community he calls home, and today as a title and closing professional bringing legal precision to one of life\u2019s biggest transactions: the closing table.',
+          'Chad earned his bachelor\u2019s degree from Auburn University in 2004 and went on to serve the State of Alabama as a State Trooper from 2007 to 2017, completing advanced training in traffic homicide investigation, motor vehicle enforcement, and criminal law. That decade of disciplined, detail-driven work \u2014 where accuracy and thoroughness were never optional \u2014 still shapes how Chad approaches every file that crosses his desk.',
+          'After leaving the State Troopers to focus on his young family, Chad built a second career in the mortgage and real estate industry, earning professional licenses and hands-on experience from the lender\u2019s side of the closing table. In 2021 he enrolled in law school while continuing to work full-time, and in 2024 he earned his Juris Doctorate from Faulkner University\u2019s Thomas Goode Jones School of Law.',
+          'That combination \u2014 mortgage industry experience, a law degree, and years of investigative rigor from law enforcement \u2014 is what sets Chad apart. He has seen real estate transactions from the lender\u2019s side, the title side, and now the legal side, giving him a rare, complete view of what it takes to get a closing right. At MPASS Law Group he leads the Title & Closing division, guiding clients through home, land, and property closings across Dothan, Huntsville, and throughout Alabama \u2014 with standard, mobile, and fully remote online closing options built around each client\u2019s schedule.',
+          'Whether it\u2019s a first home, a family farm, or a commercial property, Chad brings the same rigor, care, and hometown accountability to every closing. He is licensed through the Alabama Real Estate Commission (AREC) and holds NMLS mortgage originator licensing.',
         ] },
       { name: '[Name]', role: 'Administrative Assistant', img: 'HEADSHOT', slotId: 'team-admin',
         bio: 'Keeps the firm running day to day — managing client intake, scheduling, document coordination, and communications so every matter moves smoothly from the first call to closing.',
@@ -975,6 +995,15 @@ class Component extends DCLogic {
       { label: 'Location', value: 'Alabama — serving aviation clients nationwide' },
     ];
 
+    const firmCreds = [
+      'Service-Disabled Veteran-Owned Small Business (SDVOSB)',
+      'Admitted: Alabama State Bar; U.S. District Courts — Northern & Middle Districts of Alabama',
+      'ATP airline captain (Boeing 747) on staff',
+      'Juris Doctor with intellectual-property specialty',
+      'Title & Closing: Faulkner Law JD, AREC & NMLS licensed',
+      'Aviation nationwide · Title & Closing across Alabama',
+    ];
+
     const clients = [
       { name: 'Lumis Inc', desc: 'AI tech development company' },
       { name: 'Plane Connection LLC', desc: 'Part 91/135 management & SaaS, specializing in SMS' },
@@ -1013,9 +1042,9 @@ class Component extends DCLogic {
     ];
 
     const chadStats = [
-      { n: '20+ yrs', l: 'Mortgage & title industry' },
-      { n: 'JD', l: 'Juris Doctor, Faulkner Law' },
-      { n: 'RON', l: 'Remote online notary' },
+      { n: 'JD', l: 'Faulkner Law, 2024' },
+      { n: '10 yrs', l: 'Alabama State Trooper' },
+      { n: 'MLO · REALTOR\u00ae', l: 'NMLS & AREC licensed' },
     ];
 
     const titleSteps = [
@@ -1030,6 +1059,14 @@ class Component extends DCLogic {
     const oc = this.state.openCrew, oa = this.state.openArticle;
     const crew = (oc != null && team[oc]) ? team[oc] : null;
     const art = (oa != null && insights[oa]) ? insights[oa] : null;
+    const intent = this.state.intent || 'aviation';
+    const isClosing = intent === 'closing';
+    const roleOptions = isClosing
+      ? ['Buyer', 'Seller', 'Lender / bank', 'Real estate agent / broker', 'Aircraft owner', 'Other']
+      : ['Aircraft buyer / owner', 'Charter / operator', 'Aviation business', 'Attorney / insurer', 'Other'];
+    const matterOptions = isClosing
+      ? ['Home / real-estate closing', 'Hangar closing', 'Aircraft title & closing', 'Land / other property', 'Mobile or remote online closing', 'Other']
+      : ['Aircraft transaction', 'Regulatory / operator counsel', 'Expert witness', 'Business formation', 'Title & closing'];
 
     return {
       showHome: p === 'home',
@@ -1041,12 +1078,26 @@ class Component extends DCLogic {
       showContact: p === 'contact',
       goHome: go('home'),
       goAbout: go('about'),
+      goCrew: () => this.aboutGo('crew'),
+      goBackground: () => this.aboutGo('background'),
+      goCredentials: () => this.aboutGo('credentials'),
+      goAboutTop: () => this.aboutGo(null),
+      aboutMenu: this.state.aboutMenu,
+      openAboutMenu: () => this.setState({ aboutMenu: true }),
+      closeAboutMenu: () => this.setState({ aboutMenu: false }),
+      toggleAboutMenu: () => this.setState(s => ({ aboutMenu: !s.aboutMenu })),
       goServices: go('services'),
       goExpert: go('expert'),
       goTitle: go('title'),
       goInsights: go('insights'),
-      goContact: go('contact'),
-      pillars, services, insights, audiences, expertise, steps, creds, credlist, contacts, team, clients, propertyTypes, titleSteps, closingTypes, chadStats, cases, publications,
+      goContact: () => { this.setState({ page: 'contact', intent: 'aviation', formSubmitted: false, openCrew: null, openArticle: null }); try { window.scrollTo(0, 0); } catch (e) {} },
+      goClosing: () => { this.setState({ page: 'contact', intent: 'closing', formSubmitted: false, openCrew: null, openArticle: null }); try { window.scrollTo(0, 0); } catch (e) {} },
+      roleOptions, matterOptions,
+      contactEyebrow: isClosing ? 'Start a Closing' : 'Schedule a Consultation',
+      contactHeading: isClosing ? 'Let\u2019s get your closing started.' : 'Let\u2019s talk about your aircraft, operation, or case.',
+      contactSub: isClosing ? 'Tell us about the property and the closing type — standard, mobile, or remote online — and we\u2019ll take it from there.' : 'Tell us a little about your matter and we\u2019ll get back to you promptly. Prefer to talk now? Call or email directly.',
+      contactCta: isClosing ? 'Request Closing' : 'Request Consultation',
+      pillars, services, insights, audiences, expertise, steps, creds, credlist, firmCreds, contacts, team, clients, propertyTypes, titleSteps, closingTypes, chadStats, cases, publications,
       showCrewModal: !!crew,
       crewName: crew ? crew.name : '',
       crewRole: crew ? crew.role : '',
